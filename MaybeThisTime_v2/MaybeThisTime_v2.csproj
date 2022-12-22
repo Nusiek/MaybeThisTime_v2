@@ -27,4 +27,8 @@
     <PackageReference Include="WebDriverManager" Version="2.16.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Database\" />
+  </ItemGroup>
+
 </Project>
