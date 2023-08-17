@@ -29,8 +29,7 @@ namespace MaybeThisTime_v2.TestsCases
 
         }
 
-        /*
-         // to do
+      /* to do
         [Test, Order(2), Category("SuggessionClassExample")]
         [TestCase(TestName = "2. SuggessionClassExample - class for li.",
             Description = "2. SuggessionClassExample - finding country by giving class for li.")]

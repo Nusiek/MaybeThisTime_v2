@@ -24,8 +24,8 @@ namespace MaybeThisTime_v2.TestsCases
         {
             string expectedText = "Option1";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
-            pp.DropdownSelectOptionByText(expectedText);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            ppde.DropdownSelectOptionByText(expectedText);
 
         }
 
@@ -37,8 +37,8 @@ namespace MaybeThisTime_v2.TestsCases
         {
             string expectedText = "2";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
-            pp.DropdownSelectOptionBySelectByIndex(expectedText);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            ppde.DropdownSelectOptionBySelectByIndex(expectedText);
 
         }
 
@@ -50,8 +50,8 @@ namespace MaybeThisTime_v2.TestsCases
         {
             string expectedText = "Option3";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
-            pp.DropdownSelectOptionBySelectByText(expectedText);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            ppde.DropdownSelectOptionBySelectByText(expectedText);
 
         }
 
@@ -63,8 +63,8 @@ namespace MaybeThisTime_v2.TestsCases
         {
             string expectedText = "option2";
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
-            pp.DropdownSelectOptionBySelectByValue(expectedText);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            ppde.DropdownSelectOptionBySelectByValue(expectedText);
 
         }
     }

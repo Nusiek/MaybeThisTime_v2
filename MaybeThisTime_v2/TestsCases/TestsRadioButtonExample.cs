@@ -21,12 +21,12 @@ namespace MaybeThisTime_v2.TestsCases
             bool isOtherElementsSelected = false;
 
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
+            PracticePageRadioBattonExample pprbe = new PracticePageRadioBattonExample(driver);
 
-            pp.ChooseElementFromListTypeRadioByAttributeValue(2);
-            bool webIsElementSelectedRadio1 = pp.IsElementSelectedRadioButton(1);
-            bool webIsElementSelectedRadio2 = pp.IsElementSelectedRadioButton(2);
-            bool webIsElementSelectedRadio3 = pp.IsElementSelectedRadioButton(3);
+            pprbe.ChooseElementFromListTypeRadioByAttributeValue(2);
+            bool webIsElementSelectedRadio1 = pprbe.IsElementSelectedRadioButton(1);
+            bool webIsElementSelectedRadio2 = pprbe.IsElementSelectedRadioButton(2);
+            bool webIsElementSelectedRadio3 = pprbe.IsElementSelectedRadioButton(3);
         }
         
 
@@ -36,8 +36,8 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test2()
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
-            pp.ChooseElementFromListTypeRadioFirstElement();
+            PracticePageRadioBattonExample pprbe = new PracticePageRadioBattonExample(driver);
+            pprbe.ChooseElementFromListTypeRadioFirstElement();
         }
 
 
@@ -47,8 +47,8 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test3()
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
-            pp.ChooseElementFromListTypeRadioLastElement();
+            PracticePageRadioBattonExample pprbe = new PracticePageRadioBattonExample(driver);
+            pprbe.ChooseElementFromListTypeRadioLastElement();
         }
 
 
@@ -58,8 +58,8 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test4()
         {
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
-            pp.ChooseElementFromListTypeRadioRandomElement();
+            PracticePageRadioBattonExample pprbe = new PracticePageRadioBattonExample(driver);
+            pprbe.ChooseElementFromListTypeRadioRandomElement();
         }
 
     }

@@ -47,7 +47,7 @@ namespace MaybeThisTime_v2.Common
 
         public static bool IsElementSelected(IWebElement element)
         {
-            bool emementSelected = element.Selected;
+            bool emementSelected = element.Selected; // checked in the box or dot in the radio button
             return emementSelected;
         }
 

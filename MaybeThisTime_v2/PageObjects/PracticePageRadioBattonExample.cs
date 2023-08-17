@@ -13,11 +13,11 @@ using System.Xml.Linq;
 
 namespace MaybeThisTime_v2.PageObjects
 {
-    public class PracticePage
+    public class PracticePageRadioBattonExample
     {
         private IWebDriver driver;
 
-        public PracticePage(IWebDriver driver)
+        public PracticePageRadioBattonExample(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(driver, this);
@@ -29,41 +29,19 @@ namespace MaybeThisTime_v2.PageObjects
         // Radio Button 
 
         [FindsBy(How = How.Id, Using = "radio-btn-example")]
-        private IWebElement radioBtnExample;
+        private IWebElement _radioBtnExample;
 
         [FindsBy(How = How.XPath, Using = "//div[@id='radio-btn-example']/fieldset/label/input[@type='radio']")]
-        private IList<IWebElement> radioInputsList;
+        private IList<IWebElement> _radioInputsList;
 
         [FindsBy(How = How.XPath, Using = "//div[@id='radio-btn-example']/fieldset/label/input[@value='radio1']")]
-        private IWebElement buttonRadio1;
+        private IWebElement _buttonRadio1;
 
         [FindsBy(How = How.XPath, Using = "//div[@id='radio-btn-example']/fieldset/label/input[@value='radio2']")]
-        private IWebElement buttonRadio2;
+        private IWebElement _buttonRadio2;
 
         [FindsBy(How = How.XPath, Using = "//div[@id='radio-btn-example']/fieldset/label/input[@value='radio3']")]
-        private IWebElement buttonRadio3;
-
-        //--------------------------------------------------------------------------------------------------------------------------------------
-        // Suggession Class
-
-        [FindsBy(How = How.Id, Using = "autocomplete")]
-        private IWebElement inputSuggessioin;
-
-        [FindsBy(How = How.Id, Using = "ui-id-1")]
-        private IWebElement suggestionListUiId;
-        private By suggestionListUiIdBy = By.Id("ui-id-1");
-        private By suggestionListLiByClassName = By.ClassName("ui-menu-item");
-
-        //--------------------------------------------------------------------------------------------------------------------------------------
-        // Dropdown Example
-
-        [FindsBy(How = How.Id, Using = "dropdown-class-example")]
-        private IWebElement dropdown;
-        private By dropdownBy = By.Id("dropdown-class-example");
-
-        //
-
-        //--------------------------------------------------------------------------------------------------------------------------------------
+        private IWebElement _buttonRadio3;
 
         private IWebElement IWebElement(IWebElement element)
         {
@@ -118,9 +96,9 @@ namespace MaybeThisTime_v2.PageObjects
         /// <returns></returns>
         private IWebElement DictionaryIWebElementRadioButton(int dictionaryId)
         {
-            IWebElement buttonRadio10 = IWebElement(buttonRadio1);
-            IWebElement buttonRadio20 = IWebElement(buttonRadio2);
-            IWebElement buttonRadio30 = IWebElement(buttonRadio3);
+            IWebElement buttonRadio10 = IWebElement(_buttonRadio1);
+            IWebElement buttonRadio20 = IWebElement(_buttonRadio2);
+            IWebElement buttonRadio30 = IWebElement(_buttonRadio3);
 
             Dictionary<int, IWebElement> DictionaryIWebElement = new Dictionary<int, IWebElement>()
             {
@@ -148,7 +126,7 @@ namespace MaybeThisTime_v2.PageObjects
         /// <returns></returns>
         public void ChooseElementFromListTypeRadioByAttributeValue(int dictionaryId)
         {
-            IList<IWebElement> typeRadioList = radioInputsList;
+            IList<IWebElement> typeRadioList = _radioInputsList;
             string attributeValue = DictionaryRadioButtonValue(dictionaryId);
             string attributeName = "Value";
             CommonFunctions.ChooseElementFromList(typeRadioList, attributeName, attributeValue);
@@ -156,20 +134,20 @@ namespace MaybeThisTime_v2.PageObjects
 
         public void ChooseElementFromListTypeRadioFirstElement()
         {
-            IList<IWebElement> typeRadioList = radioInputsList;
+            IList<IWebElement> typeRadioList = _radioInputsList;
             CommonFunctions.ChooseElementFromListFirstElement(typeRadioList);
         }
 
         public void ChooseElementFromListTypeRadioLastElement()
         {
-            IList<IWebElement> typeRadioList = radioInputsList;
+            IList<IWebElement> typeRadioList = _radioInputsList;
             CommonFunctions.ChooseElementFromListLastElement(typeRadioList);
         }
 
 
         public void ChooseElementFromListTypeRadioRandomElement()
         {
-            IList<IWebElement> typeRadioList = radioInputsList;
+            IList<IWebElement> typeRadioList = _radioInputsList;
             CommonFunctions.ChooseElementFromListRandomElement(typeRadioList);
         }
 
@@ -195,7 +173,7 @@ namespace MaybeThisTime_v2.PageObjects
         public void ChooseElementFromList2(string attributeName, string attributeValue)
         {
             IList<IWebElement> elementsList = new List<IWebElement>();
-            elementsList = radioInputsList;
+            elementsList = _radioInputsList;
             //TestContext.Progress.WriteLine("elementsList: " + elementsList);
             //TestContext.Progress.WriteLine("------------------ " );
 
@@ -213,129 +191,8 @@ namespace MaybeThisTime_v2.PageObjects
                     CommonFunctions.ElementClick(element);
                     break;
                 }
-
             }
-
         }
-
-
-        //--------------------------------------------------------------------------------------------------------------------------------------
-        // Sugesstion Class
-
-        public void SugessionClick()
-        {
-            IWebElement element = IWebElement(inputSuggessioin);
-            CommonFunctions.ElementClick(element);
-        }
-
-        public void SugessionTypeText(string text)
-        {
-            IWebElement element = IWebElement(inputSuggessioin);
-            SugessionClick();
-            CommonFunctions.SendText(element, text);
-            CommonFunctions.PressArrowDown(element);
-        }
-
-        /// <summary>
-        /// <para> number -> number count from top to bottom where a country is displayed </para>
-        /// <para> if the list contains 3 countries and the search country is displayed as second on the list
-        /// as a parameter, we should pass number = 2 </para>
-        /// </summary>
-        /// <param name="number"></param>
-        public void SugessionChooseCountryByClickingArrow(int number)
-        {
-            IWebElement element = IWebElement(inputSuggessioin);
-            int howManytime = 3;
-            CommonFunctions.PressArrowDownMultipleTime(element, howManytime);
-        }
-
-        /// <summary>
-        /// <para> searchText - full name of country in ENG </para>  
-        /// <para> the country is chosen by clicking on its name </para>
-        /// </summary>
-        /// <param name="searchText"></param>
-        public void SugessionChooseCountryByClickingOnTheNameOfCountry(string searchText)
-        {
-            By element = ByElement(suggestionListUiIdBy);
-            string tagName = "li";
-            CommonFunctions.ChooseElementFromList(element, tagName, searchText);
-            
-        }
-
-        /// <summary>
-        /// <para> searchText - full name of country in ENG </para>  
-        /// <para> the country is chosen by clicking on its name </para>
-        /// </summary>
-        /// <param name="searchText"></param>
-        public void SugessionChooseCountryByClickingOnTheNameOfCountry2(string searchText)
-        {
-            Thread.Sleep(4000);
-            By element = ByElement(suggestionListUiIdBy);
-            CommonFunctions.ChooseElementFromList(element, searchText);
-        }
-
-
-
-        //--------------------------------------------------------------------------------------------------------------------------------------
-        // Dropdown Example
-
-        public void DropdownClick()
-        {
-            IWebElement element = IWebElement(dropdown);
-            CommonFunctions.ElementClick(element);
-        }
-
-        /// <summary>
-        /// <para> searchText - full name for option in ENG </para>  
-        /// </summary>
-        /// <param name="searchText"></param>
-        public void DropdownSelectOptionByText(string searchText)
-        {
-            By element = ByElement(dropdownBy);
-            Thread.Sleep(3000);
-            DropdownClick(); 
-            CommonFunctions.ChooseElementFromList(element, searchText);
-            DropdownClick();
-        }
-
-        /// <summary>
-        /// <para> searchText = index as string for element from the list </para>
-        /// </summary>
-        /// <param name="searchText"></param>
-        public void DropdownSelectOptionBySelectByIndex(string searchText)
-        {
-            IWebElement element = IWebElement(dropdown);
-            DropdownClick();
-            CommonFunctions.ChooseElementFromList(element, 3, searchText);
-            DropdownClick();
-        }
-
-        /// <summary>
-        /// <para> searchText = text for element from the list in UI </para>
-        /// </summary>
-        /// <param name="searchText"></param>
-        public void DropdownSelectOptionBySelectByText(string searchText)
-        {
-            IWebElement element = IWebElement(dropdown);
-            DropdownClick();
-            CommonFunctions.ChooseElementFromList(element, 2, searchText);
-            DropdownClick();
-        }
-
-        /// <summary>
-        /// <para> searchText = value for attribute value </para>
-        /// </summary>
-        /// <param name="searchText"></param>
-        public void DropdownSelectOptionBySelectByValue(string searchText)
-        {
-            IWebElement element = IWebElement(dropdown);
-            DropdownClick();
-            CommonFunctions.ChooseElementFromList(element, 1, searchText);
-            DropdownClick();
-        }
-
-
-
 
     }
 }
