@@ -1,7 +1,6 @@
 ﻿using AngleSharp.Dom;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools.V105.DOM;
 using OpenQA.Selenium.Support.UI;
 using RazorEngine.Compilation.ImpromptuInterface;
 using System;

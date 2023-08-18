@@ -16,8 +16,8 @@ namespace MaybeThisTime_v2.TestsCases
 
 
         [Test, Order(1), Category("CheckboxExample")]
-        [TestCase(TestName = "1. CheckboxExample  - arrow",
-            Description = "1. CheckboxExample  - choosing a country from the list by clicking the arrow.")]
+        [TestCase(TestName = "1. CheckboxExample  - It is checking the first checkbox was checked.",
+        Description = "1. CheckboxExample  - It is checking the first checkbox was checked.")]
         public void Test1()
         {
             bool isCheckedExpected = true;
@@ -33,8 +33,9 @@ namespace MaybeThisTime_v2.TestsCases
 
 
         [Test, Order(2), Category("CheckboxExample")]
-        [TestCase(TestName = "2. CheckboxExample  - ",
-                Description = "2. CheckboxExample  - .")]
+        [TestCase(TestName = "2. CheckboxExample - It is checking if the chosen checkbox is checked.",
+        Description = "2. CheckboxExample  - It is checking if the chosen checkbox is checked. " +
+        "A number of checkboxes are given by the user..")]
         public void Test2()
         {
             bool isCheckedExpected = true;
@@ -63,8 +64,8 @@ namespace MaybeThisTime_v2.TestsCases
 
 
         [Test, Order(3), Category("CheckboxExample")]
-        [TestCase(TestName = "3. CheckboxExample  - ",
-        Description = "3. CheckboxExample  - .")]
+        [TestCase(TestName = "3. CheckboxExample  - Counting checked/ unchecked checkboxes.",
+        Description = "3. CheckboxExample  - Count how many checkboxes are checked and how many are not checked.")]
         public void Test3()
         {
             bool isCheckedExpected = true;
@@ -83,5 +84,43 @@ namespace MaybeThisTime_v2.TestsCases
             TestContext.Progress.WriteLine("numberOfNotSelectedElements: " + numberOfNotSelectedElements);
 
         }
+
+
+        [Test, Order(4), Category("CheckboxExample")]
+        [TestCase(TestName = "4. CheckboxExample  - It checks all checkboxes and verifies is all are checked.",
+        Description = "4. CheckboxExample  - It checks all checkboxes and verifies is all are checked.")]
+        public void Test4()
+        {
+            int numberOfSelectedElements;
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver);
+
+            ppce.ChekingAllCheckboxes();
+
+            numberOfSelectedElements = ppce.CountNumbersOfSelestedElement();
+            TestContext.Progress.WriteLine("numberOfSelectedElements: " + numberOfSelectedElements);
+
+        }
+
+        [Test, Order(5), Category("CheckboxExample")]
+        [TestCase(TestName = "5. CheckboxExample  - It is checking the checkbox by giving a string from UI.",
+        Description = "5. CheckboxExample  - It is checking the checkbox by giving a string from UI - what user see.")]
+        public void Test5()
+        {
+            //string checkboxValueUI = "Option"; // it is checked the first element on the list
+            string checkboxValueUI = "Option3";
+            int numberOfSelectedElements;
+
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver);
+
+            ppce.CheckingCheckboxByGivenStringFromUI(checkboxValueUI);
+
+            numberOfSelectedElements = ppce.CountNumbersOfSelestedElement();
+            TestContext.Progress.WriteLine("numberOfSelectedElements: " + numberOfSelectedElements);
+
+        }
+
     }
 }

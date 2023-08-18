@@ -43,6 +43,9 @@ namespace MaybeThisTime_v2.PageObjects
         [FindsBy(How = How.XPath, Using = "//div[@id='radio-btn-example']/fieldset/label/input[@value='radio3']")]
         private IWebElement _buttonRadio3;
 
+        [FindsBy(How = How.Id, Using = "radio-btn-example")]
+        private IWebElement _allRadioButtonParent;
+
         private IWebElement IWebElement(IWebElement element)
         {
             IWebElement webElement = element;
@@ -193,6 +196,7 @@ namespace MaybeThisTime_v2.PageObjects
                 }
             }
         }
+
 
     }
 }

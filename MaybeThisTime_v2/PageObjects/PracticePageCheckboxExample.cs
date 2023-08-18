@@ -70,16 +70,11 @@ namespace MaybeThisTime_v2.PageObjects
 
 
         //--------------------------------------------------------------------------------------------------------------------------------------
-        // test xD
 
         public static List<bool> ListOfElementsWithBoolResults(IWebElement _allCheckboxesParent)
         {
             List<bool> listWithResults = new List<bool>();
             List<IWebElement> _allCheckboxElement = new List<IWebElement>();
-
-            //List<IWebElement> _allCheckboxElement = _allCheckboxesParent.FindElement(By.CssSelector("input[type='checkbox']"));
-            //IWebElement element = _allCheckboxesParent.FindElements(By.CssSelector("input[type='checkbox']"))[0];
-
             int numberOfElement = _allCheckboxesParent.FindElements(By.CssSelector("input[type='checkbox']")).Count;
 
             for (int i = 0; i < numberOfElement; i++)
@@ -88,9 +83,7 @@ namespace MaybeThisTime_v2.PageObjects
                 bool isElementChecked = CommonFunctions.IsElementSelected(element);
                 listWithResults.Add(isElementChecked);
             }
-
             return listWithResults;
-
         }
 
         /// <summary>
@@ -104,7 +97,6 @@ namespace MaybeThisTime_v2.PageObjects
             List<bool> listWithResults = ListOfElementsWithBoolResults(_allCheckboxesParent);
 
             isGivenCheckboxSelected = listWithResults[numberOfCheckboxToVerify];
-
             return isGivenCheckboxSelected;
         }
 
@@ -124,7 +116,6 @@ namespace MaybeThisTime_v2.PageObjects
                     numberOfSelectedElements = numberOfSelectedElements + 1;
                 }
             }
-
             return numberOfSelectedElements;
         }
 
@@ -144,8 +135,70 @@ namespace MaybeThisTime_v2.PageObjects
                     numberOfSelectedElements = numberOfSelectedElements + 1;
                 }
             }
-
             return numberOfSelectedElements;
+        }
+
+
+
+        public List<IWebElement> ListOfCheckboxes(IWebElement _allCheckboxesParent)
+        {
+            List<IWebElement> listOfelements = new List<IWebElement>();
+            int numberOfElement = _allCheckboxesParent.FindElements(By.CssSelector("input[type='checkbox']")).Count;
+
+            for (int i = 0; i < numberOfElement; i++)
+            {
+                IWebElement element = _allCheckboxesParent.FindElements(By.CssSelector("input[type='checkbox']"))[i];
+                listOfelements.Add(element);
+            }
+            return listOfelements;
+        }
+
+
+        public void ChekingAllCheckboxes()
+        {
+            List<IWebElement> listWithResults = ListOfCheckboxes(_allCheckboxesParent);
+            int elementsNumber = listWithResults.Count;
+
+            for (int i = 0; i < elementsNumber; i++)
+            {
+               IWebElement element = listWithResults[i];
+               CommonFunctions.ElementClick(element);
+            }
+        }
+
+
+        public List<string> ListOfCheckboxesTextUI(IWebElement _allCheckboxesParent)
+        {
+            List<string> listOfElementsText = new List<string>();
+            string tagName = "label";
+            int numberOfElement = _allCheckboxesParent.FindElements(By.TagName(tagName)).Count;
+
+            for (int i = 0; i < numberOfElement; i++)
+            {
+                string textUI = _allCheckboxesParent.FindElements(By.TagName(tagName))[i].Text;
+                //TestContext.Progress.WriteLine("textUI: " + textUI);
+                listOfElementsText.Add(textUI);
+            }
+            return listOfElementsText;
+        }
+
+        public void CheckingCheckboxByGivenStringFromUI(string givenValueFromUI)
+        {
+            List<IWebElement> listOfElement = ListOfCheckboxes(_allCheckboxesParent);
+            List<string> listOfElementTextUI = ListOfCheckboxesTextUI(_allCheckboxesParent);
+            int elementsNumber = listOfElement.Count;
+
+            for (int i = 0; i < elementsNumber; i++)
+            {              
+                string elementTextUI = listOfElementTextUI[i];
+
+                if (elementTextUI.Contains(givenValueFromUI))
+                {
+                    IWebElement element = listOfElement[i];
+                    CommonFunctions.ElementClick(element);
+                    break;
+                }
+            }       
         }
 
     }
