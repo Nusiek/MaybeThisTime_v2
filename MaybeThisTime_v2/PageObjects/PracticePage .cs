@@ -334,7 +334,11 @@ namespace MaybeThisTime_v2.PageObjects
             DropdownClick();
         }
 
-
+        public string GetText()
+        {
+            string text = CommonFunctions.GetText(_inputSuggessioin);
+            return text;
+        }
 
 
     }

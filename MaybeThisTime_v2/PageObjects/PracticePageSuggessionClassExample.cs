@@ -2,8 +2,10 @@
 using MaybeThisTime_v2.Common;
 using NUnit.Framework;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using SeleniumExtras.PageObjects;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -102,6 +104,21 @@ namespace MaybeThisTime_v2.PageObjects
             Thread.Sleep(4000);
             By element = ByElement(_suggestionListUiIdBy);
             CommonFunctions.ChooseElementFromList(element, searchText);
+        }
+
+        public int CountElementsOnTheList()
+        {
+            TestContext.Progress.WriteLine(" - 1 - ");
+            //int countElements = 13;
+            int countElements;
+
+            //SelectElement selectList = new SelectElement(_inputSuggessioin);
+            SelectElement selectList = new SelectElement(_inputSuggessioin); // wrong way, to do -> add a method that will compare the first text to the next after the arrow is pressed down, then stop counting
+            TestContext.Progress.WriteLine(" - 2 - ");
+            countElements = selectList.Options.Count;
+            TestContext.Progress.WriteLine(" - 3 - ");
+
+            return countElements;
         }
 
         

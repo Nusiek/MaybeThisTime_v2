@@ -56,7 +56,9 @@ namespace MaybeThisTime_v2.Common
 
         public static string GetText(IWebElement element)
         {
-            return element.Text;
+            //string text = element.Text;
+            string text = element.GetAttribute("value");
+            return text;
         }
 
         public static int GetTextLenght(string text)
@@ -67,6 +69,18 @@ namespace MaybeThisTime_v2.Common
         public static void SendText(IWebElement element, string textForInput)
         {
             element.SendKeys(textForInput);
+        }
+
+        public static string GetPlaceholderValue(IWebElement element)
+        {
+            string textFromInput = element.GetAttribute("placeholder");
+            return textFromInput;
+        }
+
+        public static bool CompareTwoText(string text1, string text2)
+        {
+            bool isTextTheSame = text1.Equals(text2);
+            return isTextTheSame;
         }
 
         //--------------------------------------------------------------------------------------------------------------------------------------
