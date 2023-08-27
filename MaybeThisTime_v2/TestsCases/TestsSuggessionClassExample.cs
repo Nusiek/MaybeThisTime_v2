@@ -98,8 +98,8 @@ namespace MaybeThisTime_v2.TestsCases
             driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
             PracticePageSuggessionClassExample ppsce = new PracticePageSuggessionClassExample(driver);
 
-            ppsce.SugessionTypeText(parcialTextForInput);
-            countElements = ppsce.CountElementsOnTheList();
+            //ppsce.SugessionTypeText(parcialTextForInput);
+            countElements = ppsce.CountElementsOnTheList(parcialTextForInput);
 
             TestContext.Progress.WriteLine("countElements: " + countElements);
 

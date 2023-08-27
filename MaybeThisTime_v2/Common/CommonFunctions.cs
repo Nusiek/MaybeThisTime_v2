@@ -188,6 +188,22 @@ namespace MaybeThisTime_v2.Common
             elememnt.SendKeys(Keys.Enter);
         }
 
+        public static void PressBackspace(IWebElement elememnt)
+        {
+            elememnt.SendKeys(Keys.Backspace);
+        }
+
+        public static void PressControlPlusSymbol(IWebElement elememnt, string symbol)
+        {
+            elememnt.SendKeys(Keys.Control + symbol);
+        }
+
+        public static void PressControlPlusA(IWebElement elememnt)
+        {
+            string symbol = "a";
+            PressControlPlusSymbol(elememnt, symbol);
+        }
+
         public static void PressArrowDownMultipleTime(IWebElement elememnt, int honManyTime)
         {
             for (int i = 0; i < honManyTime; i++)

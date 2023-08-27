@@ -65,7 +65,7 @@ namespace MaybeThisTime_v2.PageObjects
             IWebElement element = IWebElement(_inputSuggessioin);
             SugessionClick();
             CommonFunctions.SendText(element, text);
-            CommonFunctions.PressArrowDown(element);
+            //CommonFunctions.PressArrowDown(element);
         }
 
         /// <summary>
@@ -106,19 +106,59 @@ namespace MaybeThisTime_v2.PageObjects
             CommonFunctions.ChooseElementFromList(element, searchText);
         }
 
-        public int CountElementsOnTheList()
+
+        public string GetFirstCountryNameOnTheList(string parcialTextForInput)
         {
-            TestContext.Progress.WriteLine(" - 1 - ");
-            //int countElements = 13;
-            int countElements;
+            string countryName;
+            CommonFunctions.ElementClick(_inputSuggessioin);
+            CommonFunctions.SendText(_inputSuggessioin, parcialTextForInput);
+            CommonFunctions.PressEnter(_inputSuggessioin);
+            Thread.Sleep(1000);
+            CommonFunctions.PressArrowDown(_inputSuggessioin);
+            countryName = CommonFunctions.GetText(_inputSuggessioin);
 
-            //SelectElement selectList = new SelectElement(_inputSuggessioin);
-            SelectElement selectList = new SelectElement(_inputSuggessioin); // wrong way, to do -> add a method that will compare the first text to the next after the arrow is pressed down, then stop counting
-            TestContext.Progress.WriteLine(" - 2 - ");
-            countElements = selectList.Options.Count;
-            TestContext.Progress.WriteLine(" - 3 - ");
+            return countryName;
 
-            return countElements;
+        }
+
+        public string GetNextCountryNameOnTheList(string parcialTextForInput, int countedElements)
+        {
+            string countryName;
+            int nextCountryOnTheList = countedElements + 1; // + 1 next country name
+            CommonFunctions.ElementClick(_inputSuggessioin);
+            Thread.Sleep(1000);
+
+            CommonFunctions.PressControlPlusA(_inputSuggessioin);
+            Thread.Sleep(1000);
+
+            CommonFunctions.PressBackspace(_inputSuggessioin);
+            Thread.Sleep(1000);
+
+            CommonFunctions.SendText(_inputSuggessioin, parcialTextForInput);
+            Thread.Sleep(1000);
+
+            countryName = CommonFunctions.GetText(_inputSuggessioin);
+            return countryName;
+        }
+
+
+        public int CountElementsOnTheList(string parcialTextForInput)
+        {        
+            int countedElements = 0;
+            string firstCountryNameOnTheList;
+            string nextCountryNameOnTheList;
+
+            nextCountryNameOnTheList = "?";
+            firstCountryNameOnTheList = GetFirstCountryNameOnTheList(parcialTextForInput);
+            
+            while (!firstCountryNameOnTheList.Equals(nextCountryNameOnTheList))
+            {
+                countedElements++;
+                nextCountryNameOnTheList = GetNextCountryNameOnTheList(parcialTextForInput, countedElements);
+            }
+
+            int result = countedElements - 1; // the given input is also counted, there is bug on this page?
+            return result; 
         }
 
         
