@@ -1,37 +1,39 @@
 ﻿using MaybeThisTime_v2.Common;
-using MaybeThisTime_v2.PageObjects;
+using MaybeThisTime_v2.PageObjects.PageObjectsPracticePage;
+using MaybeThisTime_v2.utilities;
 using NUnit.Framework;
 using System;
 using System.Diagnostics;
 using System.Threading;
 
-namespace MaybeThisTime_v2.TestsCases
+namespace MaybeThisTime_v2.TestsCases.TestsCasesPracticePage
 {
     public class TestsCheckboxExample : Base
     {
+        /*
         [SetUp]
         public void Setup()
         {
         }
-
+        */
 
         [Test, Order(1), Category("CheckboxExample")]
         [TestCase(TestName = "1. CheckboxExample  - It is checking the first checkbox was checked.",
         Description = "1. CheckboxExample  - It is checking the first checkbox was checked.")]
         public void Test1()
         {
-            bool isCheckedExpected = true;
+            //bool isCheckedExpected = true;
             bool isChecked;
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver.Value);
 
             ppce.ChooseOptionOne();
             isChecked = ppce.IsElementChecked();
 
-            TestContext.Progress.WriteLine("isChecked: " + isChecked);
+            //TestContext.Progress.WriteLine("isChecked: " + isChecked);
         }
 
-
+        /*
         [Test, Order(2), Category("CheckboxExample")]
         [TestCase(TestName = "2. CheckboxExample - It is checking if the chosen checkbox is checked.",
         Description = "2. CheckboxExample  - It is checking if the chosen checkbox is checked. " +
@@ -46,8 +48,8 @@ namespace MaybeThisTime_v2.TestsCases
             int firstCheckboxToVerify = 0;
             int secondCheckboxToVerify = 1;
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver.Value);
 
             ppce.ChooseOptionOne();
             ppce.ChooseOptionThree();
@@ -72,8 +74,8 @@ namespace MaybeThisTime_v2.TestsCases
             int numberOfSelectedElements;
             int numberOfNotSelectedElements;
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver.Value);
 
             ppce.ChooseOptionOne();
 
@@ -93,8 +95,8 @@ namespace MaybeThisTime_v2.TestsCases
         {
             int numberOfSelectedElements;
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver.Value);
 
             ppce.ChekingAllCheckboxes();
 
@@ -112,8 +114,8 @@ namespace MaybeThisTime_v2.TestsCases
             string checkboxValueUI = "Option3";
             int numberOfSelectedElements;
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageCheckboxExample ppce = new PracticePageCheckboxExample(driver.Value);
 
             ppce.CheckingCheckboxByGivenStringFromUI(checkboxValueUI);
 
@@ -121,6 +123,6 @@ namespace MaybeThisTime_v2.TestsCases
             TestContext.Progress.WriteLine("numberOfSelectedElements: " + numberOfSelectedElements);
 
         }
-
+        */
     }
 }

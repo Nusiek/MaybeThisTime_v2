@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-namespace MaybeThisTime_v2.PageObjects
+namespace MaybeThisTime_v2.PageObjects.PageObjectsPracticePage
 {
     internal class PracticePageCheckboxExample
     {
@@ -33,10 +33,10 @@ namespace MaybeThisTime_v2.PageObjects
 
         [FindsBy(How = How.Id, Using = "checkBoxOption3")]
         private IWebElement _checkBoxOption3;
-        
+
         [FindsBy(How = How.Id, Using = "checkbox-example")]
         private IWebElement _allCheckboxesParent;
-        
+
 
         private IWebElement IWebElement(IWebElement element)
         {
@@ -104,14 +104,14 @@ namespace MaybeThisTime_v2.PageObjects
         {
             List<bool> listWithResults = ListOfElementsWithBoolResults(_allCheckboxesParent);
             bool isElementSelected;
-            int numberOfSelectedElements = 0;         
+            int numberOfSelectedElements = 0;
             int elementsNumber = listWithResults.Count;
 
             for (int i = 0; i < elementsNumber; i++)
             {
                 isElementSelected = listWithResults[i];
 
-                if(isElementSelected == true)
+                if (isElementSelected == true)
                 {
                     numberOfSelectedElements = numberOfSelectedElements + 1;
                 }
@@ -161,8 +161,8 @@ namespace MaybeThisTime_v2.PageObjects
 
             for (int i = 0; i < elementsNumber; i++)
             {
-               IWebElement element = listWithResults[i];
-               CommonFunctions.ElementClick(element);
+                IWebElement element = listWithResults[i];
+                CommonFunctions.ElementClick(element);
             }
         }
 
@@ -189,7 +189,7 @@ namespace MaybeThisTime_v2.PageObjects
             int elementsNumber = listOfElement.Count;
 
             for (int i = 0; i < elementsNumber; i++)
-            {              
+            {
                 string elementTextUI = listOfElementTextUI[i];
 
                 if (elementTextUI.Contains(givenValueFromUI))
@@ -198,7 +198,7 @@ namespace MaybeThisTime_v2.PageObjects
                     CommonFunctions.ElementClick(element);
                     break;
                 }
-            }       
+            }
         }
 
     }

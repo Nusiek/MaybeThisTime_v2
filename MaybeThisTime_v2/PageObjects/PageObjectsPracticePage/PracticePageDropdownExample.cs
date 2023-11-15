@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace MaybeThisTime_v2.PageObjects
+namespace MaybeThisTime_v2.PageObjects.PageObjectsPracticePage
 {
     public class PracticePageDropdownExample
     {
@@ -22,7 +22,7 @@ namespace MaybeThisTime_v2.PageObjects
             this.driver = driver;
             PageFactory.InitElements(driver, this);
         }
-    
+
         //--------------------------------------------------------------------------------------------------------------------------------------
         // Dropdown Example
 
@@ -45,7 +45,7 @@ namespace MaybeThisTime_v2.PageObjects
             By byElement = element;
             return byElement;
         }
-     
+
         //--------------------------------------------------------------------------------------------------------------------------------------
         // Dropdown Example
 
@@ -55,16 +55,18 @@ namespace MaybeThisTime_v2.PageObjects
             CommonFunctions.ElementClick(element);
         }
 
+
         /// <summary>
         /// <para> searchText - full name for option in ENG </para>  
         /// </summary>
         /// <param name="searchText"></param>
         public void DropdownSelectOptionByText(string searchText)
         {
+            var cm = new CommonFunctions();
             By element = ByElement(_dropdownBy);
             Thread.Sleep(3000);
-            DropdownClick(); 
-            CommonFunctions.ChooseElementFromList(element, searchText);
+            DropdownClick();
+            cm.ChooseElementFromList(element, searchText);
             DropdownClick();
         }
 
@@ -103,5 +105,6 @@ namespace MaybeThisTime_v2.PageObjects
             CommonFunctions.ChooseElementFromList(element, 1, searchText);
             DropdownClick();
         }
+
     }
 }

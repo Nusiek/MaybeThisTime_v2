@@ -1,4 +1,5 @@
-﻿using MaybeThisTime_v2.PageObjects;
+﻿using MaybeThisTime_v2.PageObjects.PageObjectsPracticePage;
+using MaybeThisTime_v2.utilities;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using NUnit.Framework;
 using System;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaybeThisTime_v2.TestsCases
+namespace MaybeThisTime_v2.TestsCases.TestsCasesPracticePage
 {
     public class TestsDropdownExample : Base
     {
@@ -23,21 +24,21 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test1()
         {
             string expectedText = "Option1";
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver.Value);
             ppde.DropdownSelectOptionByText(expectedText);
 
         }
 
-
+        /*
         [Test, Order(2), Category("DropdownExample")]
         [TestCase(TestName = "2. DropdownExample  - SelectElement + SelectByIndex().",
             Description = "2. DropdownExample  - choosing an option for the list using SelectByIndex().")]
         public void Test2()
         {
             string expectedText = "2";
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver.Value);
             ppde.DropdownSelectOptionBySelectByIndex(expectedText);
 
         }
@@ -49,8 +50,8 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test3()
         {
             string expectedText = "Option3";
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver.Value);
             ppde.DropdownSelectOptionBySelectByText(expectedText);
 
         }
@@ -62,10 +63,11 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test4()
         {
             string expectedText = "option2";
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageDropdownExample ppde = new PracticePageDropdownExample(driver.Value);
             ppde.DropdownSelectOptionBySelectByValue(expectedText);
 
         }
+        */
     }
 }

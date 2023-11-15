@@ -1,4 +1,5 @@
-﻿using MaybeThisTime_v2.PageObjects;
+﻿using MaybeThisTime_v2.PageObjects.PageObjectsPracticePage;
+using MaybeThisTime_v2.utilities;
 using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using NUnit.Framework;
 using SeleniumExtras.PageObjects;
@@ -8,15 +9,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaybeThisTime_v2.TestsCases
+namespace MaybeThisTime_v2.TestsCases.TestsCasesPracticePage
 {
     internal class TestsElementDisplayedExample : Base
     {
+        /*
         [SetUp]
         public void Setup()
         {
         }
-
+        */
 
         [Test, Order(1), Category("ElementDisplayedExample")]
         [TestCase(TestName = "1. ElementDisplayedExample  - checking if the element is displayed at the beginning.",
@@ -24,8 +26,8 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test1()
         {
             bool isDisplayed;
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver.Value);
 
             ppede.HideButtonClick();
             isDisplayed = ppede.IsElementDisplayed();
@@ -40,8 +42,8 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test2()
         {
             bool isDisplayed;
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver.Value);
 
             ppede.HideButtonClick();
             isDisplayed = ppede.IsElementDisplayed();
@@ -56,8 +58,8 @@ namespace MaybeThisTime_v2.TestsCases
         public void Test3()
         {
             bool isDisplayed;
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver.Value);
 
             ppede.HideButtonClick();
             ppede.ButtonShowClick();
@@ -75,8 +77,8 @@ namespace MaybeThisTime_v2.TestsCases
             string text = "example of text xD";
             string textBefore;
             string textAfter;
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver.Value);
 
             ppede.SendText(text);
             textBefore = ppede.GetTextFromInput();
@@ -100,8 +102,8 @@ namespace MaybeThisTime_v2.TestsCases
             string valueOfPlaceholderBefore = "Hide / Show Example";
             string valueOfPlaceholderAfter;
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageElementDisplayedExample ppede = new PracticePageElementDisplayedExample(driver.Value);
 
             ppede.HideButtonClick();
             ppede.ButtonShowClick();

@@ -137,7 +137,7 @@ namespace MaybeThisTime_v2.PageObjects
         // page action
         //--------------------------------------------------------------------------------------------------------------------------------------
         // Radio Button 
-
+        /*
         /// <summary>
         /// <para> DictionaryRadioButtonValue dictionaryId: </para>
         /// <para> 1 = radio1 </para>
@@ -165,7 +165,7 @@ namespace MaybeThisTime_v2.PageObjects
             IList<IWebElement> typeRadioList = _radioInputsList;
             CommonFunctions.ChooseElementFromListLastElement(typeRadioList);
         }
-
+        */
 
         public void ChooseElementFromListTypeRadioRandomElement()
         {
@@ -249,6 +249,7 @@ namespace MaybeThisTime_v2.PageObjects
             CommonFunctions.PressArrowDownMultipleTime(element, howManytime);
         }
 
+        
         /// <summary>
         /// <para> searchText - full name of country in ENG </para>  
         /// <para> the country is chosen by clicking on its name </para>
@@ -256,12 +257,14 @@ namespace MaybeThisTime_v2.PageObjects
         /// <param name="searchText"></param>
         public void SugessionChooseCountryByClickingOnTheNameOfCountry(string searchText)
         {
+            var cm = new CommonFunctions();
             By element = ByElement(_suggestionListUiIdBy);
             string tagName = "li";
-            CommonFunctions.ChooseElementFromList(element, tagName, searchText);
+            cm.ChooseElementFromList(element, tagName, searchText);
             
         }
-
+        
+        
         /// <summary>
         /// <para> searchText - full name of country in ENG </para>  
         /// <para> the country is chosen by clicking on its name </para>
@@ -269,11 +272,12 @@ namespace MaybeThisTime_v2.PageObjects
         /// <param name="searchText"></param>
         public void SugessionChooseCountryByClickingOnTheNameOfCountry2(string searchText)
         {
+            var cm = new CommonFunctions();
             Thread.Sleep(4000);
             By element = ByElement(_suggestionListUiIdBy);
-            CommonFunctions.ChooseElementFromList(element, searchText);
+            cm.ChooseElementFromList(element, searchText);
         }
-
+        
 
 
         //--------------------------------------------------------------------------------------------------------------------------------------
@@ -284,7 +288,7 @@ namespace MaybeThisTime_v2.PageObjects
             IWebElement element = IWebElement(_dropdown);
             CommonFunctions.ElementClick(element);
         }
-
+        /*
         /// <summary>
         /// <para> searchText - full name for option in ENG </para>  
         /// </summary>
@@ -297,7 +301,7 @@ namespace MaybeThisTime_v2.PageObjects
             CommonFunctions.ChooseElementFromList(element, searchText);
             DropdownClick();
         }
-
+        */
         /// <summary>
         /// <para> searchText = index as string for element from the list </para>
         /// </summary>

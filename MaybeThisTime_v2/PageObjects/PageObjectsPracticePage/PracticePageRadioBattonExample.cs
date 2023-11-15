@@ -11,7 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace MaybeThisTime_v2.PageObjects
+namespace MaybeThisTime_v2.PageObjects.PageObjectsPracticePage
 {
     public class PracticePageRadioBattonExample
     {

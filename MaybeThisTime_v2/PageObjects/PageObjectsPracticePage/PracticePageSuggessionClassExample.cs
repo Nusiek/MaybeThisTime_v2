@@ -13,7 +13,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace MaybeThisTime_v2.PageObjects
+namespace MaybeThisTime_v2.PageObjects.PageObjectsPracticePage
 {
     public class PracticePageSuggessionClassExample
     {
@@ -25,7 +25,7 @@ namespace MaybeThisTime_v2.PageObjects
             PageFactory.InitElements(driver, this);
         }
 
-        
+
         //--------------------------------------------------------------------------------------------------------------------------------------
         // Suggession Class
 
@@ -37,7 +37,7 @@ namespace MaybeThisTime_v2.PageObjects
         private By _suggestionListUiIdBy = By.Id("ui-id-1");
         private By _suggestionListLiByClassName = By.ClassName("ui-menu-item");
 
-     
+
         private IWebElement IWebElement(IWebElement element)
         {
             IWebElement webElement = element;
@@ -50,7 +50,7 @@ namespace MaybeThisTime_v2.PageObjects
             return byElement;
         }
 
-        
+
         //--------------------------------------------------------------------------------------------------------------------------------------
         // Sugesstion Class
 
@@ -81,6 +81,8 @@ namespace MaybeThisTime_v2.PageObjects
             CommonFunctions.PressArrowDownMultipleTime(element, howManytime);
         }
 
+
+        /*
         /// <summary>
         /// <para> searchText - full name of country in ENG </para>  
         /// <para> the country is chosen by clicking on its name </para>
@@ -93,7 +95,9 @@ namespace MaybeThisTime_v2.PageObjects
             CommonFunctions.ChooseElementFromList(element, tagName, searchText);
             
         }
+        */
 
+        /*
         /// <summary>
         /// <para> searchText - full name of country in ENG </para>  
         /// <para> the country is chosen by clicking on its name </para>
@@ -105,7 +109,7 @@ namespace MaybeThisTime_v2.PageObjects
             By element = ByElement(_suggestionListUiIdBy);
             CommonFunctions.ChooseElementFromList(element, searchText);
         }
-
+        */
 
         public string GetFirstCountryNameOnTheList(string parcialTextForInput)
         {
@@ -143,14 +147,14 @@ namespace MaybeThisTime_v2.PageObjects
 
 
         public int CountElementsOnTheList(string parcialTextForInput)
-        {        
+        {
             int countedElements = 0;
             string firstCountryNameOnTheList;
             string nextCountryNameOnTheList;
 
             nextCountryNameOnTheList = "?";
             firstCountryNameOnTheList = GetFirstCountryNameOnTheList(parcialTextForInput);
-            
+
             while (!firstCountryNameOnTheList.Equals(nextCountryNameOnTheList))
             {
                 countedElements++;
@@ -158,9 +162,9 @@ namespace MaybeThisTime_v2.PageObjects
             }
 
             int result = countedElements - 1; // the given input is also counted, there is bug on this page?
-            return result; 
+            return result;
         }
 
-        
+
     }
 }

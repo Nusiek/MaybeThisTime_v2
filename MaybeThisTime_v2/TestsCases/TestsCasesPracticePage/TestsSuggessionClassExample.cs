@@ -1,10 +1,12 @@
 ﻿using MaybeThisTime_v2.Common;
+using MaybeThisTime_v2.utilities;
 using MaybeThisTime_v2.PageObjects;
 using NUnit.Framework;
 using System;
 using System.Threading;
+using MaybeThisTime_v2.PageObjects.PageObjectsPracticePage;
 
-namespace MaybeThisTime_v2.TestsCases
+namespace MaybeThisTime_v2.TestsCases.TestsCasesPracticePage
 {
     public class TestsSuggessionClassExample : Base
     {
@@ -23,8 +25,8 @@ namespace MaybeThisTime_v2.TestsCases
             string expectedText = "Poland";
             string textFromInput;
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePage pp = new PracticePage(driver.Value);
 
             pp.SugessionTypeText(parcialTextForInput);
             pp.SugessionChooseCountryByClickingArrow(3);
@@ -34,25 +36,25 @@ namespace MaybeThisTime_v2.TestsCases
 
         }
 
-      /* to do
-        [Test, Order(2), Category("SuggessionClassExample")]
-        [TestCase(TestName = "2. SuggessionClassExample - class for li.",
-            Description = "2. SuggessionClassExample - finding country by giving class for li.")]
-        public void Test2()
-        {
-            string expectedText = "Poland";
-            string parcialTextForInput = "pol";
+        /* to do
+          [Test, Order(2), Category("SuggessionClassExample")]
+          [TestCase(TestName = "2. SuggessionClassExample - class for li.",
+              Description = "2. SuggessionClassExample - finding country by giving class for li.")]
+          public void Test2()
+          {
+              string expectedText = "Poland";
+              string parcialTextForInput = "pol";
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
+              driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+              PracticePage pp = new PracticePage(driver);
 
-            pp.SugessionTypeText(parcialTextForInput);
-            //Thread.Sleep(4000);
-            pp.SugessionChooseCountryByClickingOnTheNameOfCountry2(expectedText);
+              pp.SugessionTypeText(parcialTextForInput);
+              //Thread.Sleep(4000);
+              pp.SugessionChooseCountryByClickingOnTheNameOfCountry2(expectedText);
 
-        }
-        */
-        
+          }
+          */
+
         [Test, Order(3), Category("SuggessionClassExample")]
         [TestCase(TestName = "3. SuggessionClassExample - ).",
                 Description = "3. SuggessionClassExample - choosing a country by clicking on the name of the country.")]
@@ -61,8 +63,8 @@ namespace MaybeThisTime_v2.TestsCases
             string expectedText = "Poland";
             string parcialTextForInput = "pol";
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePage pp = new PracticePage(driver.Value);
 
             pp.SugessionTypeText(parcialTextForInput);
             pp.SugessionChooseCountryByClickingOnTheNameOfCountry(expectedText);
@@ -77,8 +79,8 @@ namespace MaybeThisTime_v2.TestsCases
             string expectedText = "Poland";
             string parcialTextForInput = "pol";
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePage pp = new PracticePage(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePage pp = new PracticePage(driver.Value);
 
             pp.SugessionTypeText(parcialTextForInput);
             pp.SugessionChooseCountryByClickingOnTheNameOfCountry2(expectedText);
@@ -95,8 +97,8 @@ namespace MaybeThisTime_v2.TestsCases
             string parcialTextForInput = "po";
             int countElements;
 
-            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
-            PracticePageSuggessionClassExample ppsce = new PracticePageSuggessionClassExample(driver);
+            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(120);
+            PracticePageSuggessionClassExample ppsce = new PracticePageSuggessionClassExample(driver.Value);
 
             //ppsce.SugessionTypeText(parcialTextForInput);
             countElements = ppsce.CountElementsOnTheList(parcialTextForInput);

@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MaybeThisTime_v2.PageObjects
+namespace MaybeThisTime_v2.PageObjects.PageObjectsPracticePage
 {
     internal class PracticePageElementDisplayedExample
     {
@@ -28,7 +28,7 @@ namespace MaybeThisTime_v2.PageObjects
         [FindsBy(How = How.Id, Using = "hide-textbox")]
         private IWebElement _ButtonHide;
 
-        [FindsBy(How =How.Id, Using = "show-textbox")]
+        [FindsBy(How = How.Id, Using = "show-textbox")]
         private IWebElement _ButtonShow;
 
         [FindsBy(How = How.Id, Using = "displayed-text")]
@@ -36,7 +36,7 @@ namespace MaybeThisTime_v2.PageObjects
 
 
         //--------------------------------------------------------------------------------------------------------------------------------------
-        
+
         public void HideButtonClick()
         {
             CommonFunctions.ElementClick(_ButtonHide);

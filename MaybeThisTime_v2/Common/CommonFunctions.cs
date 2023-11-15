@@ -1,4 +1,5 @@
 ﻿using AngleSharp.Dom;
+using MaybeThisTime_v2.utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
@@ -21,12 +22,13 @@ namespace MaybeThisTime_v2.Common
             element.Click();
         }
 
+        /*
         public static void ElementClick(By element)
         {
             IWebElement iWebElement = driver.FindElement(element);
             iWebElement.Click();
         }
-
+        */
 
         //--------------------------------------------------------------------------------------------------------------------------------------
         // element displayed, enabled, selected
@@ -215,26 +217,26 @@ namespace MaybeThisTime_v2.Common
             PressEnter(elememnt);
         }
 
-        public static IList<IWebElement> CreateElementList(By element)
+        public IList<IWebElement> CreateElementList(By element)
         {
-            IList<IWebElement> elementList = driver.FindElements(element);
+            IList<IWebElement> elementList = GetDriver().FindElements(element);
             return elementList;
         }
 
-        public static IList<IWebElement> CreateElementList(By element, string tagName)
+        public IList<IWebElement> CreateElementList(By element, string tagName)
         {
-            IList<IWebElement> elementList = driver.FindElement(element).FindElements(By.TagName($"{tagName}"));
+            IList<IWebElement> elementList = GetDriver().FindElement(element).FindElements(By.TagName($"{tagName}"));
             return elementList;
         }
 
-        public static int CountListLenght(By element)
+        public int CountListLenght(By element)
         {
             IList<IWebElement> elementList = CreateElementList(element);
             int lenght = elementList.Count();
             return lenght;   
         }
 
-        public static int CountListLenght(By element, string tagName)
+        public int CountListLenght(By element, string tagName)
         {
             IList<IWebElement> elementList = CreateElementList(element, tagName);
             int lenght = elementList.Count();
@@ -242,7 +244,7 @@ namespace MaybeThisTime_v2.Common
             return lenght;
         }
 
-        public static void ChooseElementFromList(By element, string tagName, string searchText)
+        public void ChooseElementFromList(By element, string tagName, string searchText)
         {
             IWebElement elementList;
             IList<IWebElement> elementsList = CreateElementList(element, tagName);
@@ -262,16 +264,16 @@ namespace MaybeThisTime_v2.Common
             }
         }
 
-        public static void FindingTagNameByGivenIdNameV1(string idName)
+        public void FindingTagNameByGivenIdNameV1(string idName)
         {
-            IWebElement element = driver.FindElement(By.Id($"{idName}"));
+            IWebElement element = driver.Value.FindElement(By.Id($"{idName}"));
             string tagName = element.TagName.ToString();
         }
 
 
-        public static string FindingTagNameByGivenIdName(By element)
+        public string FindingTagNameByGivenIdName(By element)
         {
-            IWebElement webElement = driver.FindElement(element);
+            IWebElement webElement = driver.Value.FindElement(element);
             string tagName = webElement.TagName.ToString();
             return tagName;
         } 
@@ -287,7 +289,7 @@ namespace MaybeThisTime_v2.Common
             };
         }
 
-        public static void ChooseElementFromList(By element, string searchText)
+        public void ChooseElementFromList(By element, string searchText)
         {
             IWebElement elementList;
             string tagName = FindingTagNameByGivenIdName(element);
