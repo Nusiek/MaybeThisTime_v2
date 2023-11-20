@@ -96,10 +96,10 @@ namespace MaybeThisTime_v2.utilities
             InitBrowser(browserName);
 
             //driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-            driver.Value.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+            GetDriver().Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 
             //driver.Value.Manage().Window.Maximize();
-            driver.Value.Manage().Window.Maximize();
+            GetDriver().Manage().Window.Maximize();
             // open browser <- end
 
             // browser address -> start
@@ -112,7 +112,7 @@ namespace MaybeThisTime_v2.utilities
 
             //driver.Value.Url = "https://rahulshettyacademy.com/AutomationPractice/";
             //driver.Value.Url = webAddress;
-            driver.Value.Url = webAddress;
+            GetDriver().Url = webAddress;
             // browser address <- end
         }
 

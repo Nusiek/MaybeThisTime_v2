@@ -52,11 +52,16 @@ namespace MaybeThisTime_v2.Common
             return emementSelected;
         }
 
-        //--------------------------------------------------------------------------------------------------------------------------------------
-        // text
-        //--------------------------------------------------------------------------------------------------------------------------------------
+        public static void WaitUntilElementToBeClickable(IWebDriver driver, IWebElement element, int seconds)
+        {
+            WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(seconds));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(element));
+        }
+            //--------------------------------------------------------------------------------------------------------------------------------------
+            // text
+            //--------------------------------------------------------------------------------------------------------------------------------------
 
-        public static string GetText(IWebElement element)
+            public static string GetText(IWebElement element)
         {
             //string text = element.Text;
             string text = element.GetAttribute("value");
@@ -342,7 +347,13 @@ namespace MaybeThisTime_v2.Common
 
         }
 
-
+        public static string GetWebsiteTitle(IWebDriver driver)
+        {
+            Thread.Sleep(3000);
+            string tabName = driver.Title;
+            TestContext.Progress.WriteLine($"tab name: {tabName}");
+            return tabName;
+        }
 
 
         /*
