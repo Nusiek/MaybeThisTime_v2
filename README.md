@@ -6,4 +6,5 @@ automatisation tests for a webpage written based on information found on the int
  > Radio Button Example <br/>
  > Suggession Class Example <br/>
  > Dropdown Example <br/>
+ > Checkbox Example <br/>
  > Login to account <br/>
